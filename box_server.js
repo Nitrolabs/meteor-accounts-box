@@ -1,9 +1,7 @@
 Box = {};
 
-// FIXME
-Box.whitelistedFields = ['id', 'email', 'verified_email', 'name', 'given_name',
-                   'family_name', 'picture', 'locale', 'timezone', 'gender'];
-
+// For now, might add more fields later
+Box.whitelistedFields = ['id', 'login', 'name', 'given_name'];
 
 OAuth.registerService('box', 2, null, function(query) {
 
@@ -43,7 +41,7 @@ var getTokens = function (query) {
   var response;
   try {
     response = HTTP.post(
-      "FIXME", {params: {
+      "https://api.box.com/api/oauth2/token", {params: {
         code: query.code,
         client_id: config.clientId,
         client_secret: OAuth.openSecret(config.secret),
@@ -69,7 +67,7 @@ var getTokens = function (query) {
 var getIdentity = function (accessToken) {
   try {
     return HTTP.get(
-      "FIXME",
+      "https://api.box.com/2.0/users/me",
       {params: {access_token: accessToken}}).data;
   } catch (err) {
     throw _.extend(new Error("Failed to fetch identity from Box. " + err.message),

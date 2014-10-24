@@ -23,18 +23,15 @@ Box.requestCredential = function (options, credentialRequestCompleteCallback) {
 
   var credentialToken = Random.secret();
 
-  // always need this to get user id from box.
-  var requiredScope = ['profile'];
-  var scope = ['email'];
+  var scope = ['folder_readwrite'];
   if (options.requestPermissions)
     scope = options.requestPermissions;
-  scope = _.union(scope, requiredScope);
   var flatScope = _.map(scope, encodeURIComponent).join('+');
 
   var loginStyle = OAuth._loginStyle('box', config, options);
 
   var loginUrl =
-        'FIXME' +
+        'https://api.box.com/api/oauth2/authorize' +
         '?response_type=code' +
         '&client_id=' + config.clientId +
         '&scope=' + flatScope +
