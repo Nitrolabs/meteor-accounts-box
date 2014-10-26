@@ -29,7 +29,7 @@ Box.requestCredential = function (options, credentialRequestCompleteCallback) {
         'https://app.box.com/api/oauth2/authorize' +
         '?response_type=code' +
         '&client_id=' + config.clientId +
-        '&redirect_uri=' + OAuth._redirectUri('box', config) +
+        '&redirect_uri=' + OAuth._redirectUri('box', config, {}, {secure: true}) +
         '&state=' + OAuth._stateParam(loginStyle, credentialToken);
 
   OAuth.launchLogin({
