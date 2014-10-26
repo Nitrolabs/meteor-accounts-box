@@ -1,7 +1,7 @@
 Package.describe({
   name: 'gcampax:accounts-box',
   summary: 'OAuth2 integration with Box cloud storage service',
-  version: '1.0.1',
+  version: '1.0.2',
   git: 'https://github.com/gcampax/meteor-accounts-box'
 });
 
