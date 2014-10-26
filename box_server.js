@@ -41,7 +41,7 @@ var getTokens = function (query) {
   var response;
   try {
     response = HTTP.post(
-      "https://api.box.com/api/oauth2/token", {params: {
+      "https://app.box.com/api/oauth2/token", {params: {
         code: query.code,
         client_id: config.clientId,
         client_secret: OAuth.openSecret(config.secret),
@@ -67,7 +67,7 @@ var getTokens = function (query) {
 var getIdentity = function (accessToken) {
   try {
     return HTTP.get(
-      "https://api.box.com/2.0/users/me",
+      "https://www.box.com/api/2.0/users/me",
       {params: {access_token: accessToken}}).data;
   } catch (err) {
     throw _.extend(new Error("Failed to fetch identity from Box. " + err.message),

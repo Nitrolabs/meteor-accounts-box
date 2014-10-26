@@ -5,28 +5,27 @@ Package.describe({
   git: 'https://github.com/gcampax/meteor-accounts-box'
 });
 
-Package.on_use(function(api) {
+Package.onUse(function(api) {
     api.versionsFrom('0.9.4');
     api.use('accounts-base', ['client', 'server']);
     // Export Accounts (etc) to packages using this one.
     api.imply('accounts-base', ['client', 'server']);
     api.use('accounts-oauth', ['client', 'server']);
     api.use('oauth2', ['client', 'server']);
+    api.use('oauth', ['client', 'server']);
     api.use('http', ['server']);
     api.use(['underscore', 'service-configuration'], ['client', 'server']);
     api.use(['random', 'templating'], 'client');
 
     api.export('Box');
 
-    api.add_files('box.js', ['client', 'server']);
-    api.add_files(
-        ['box_configure.html', 'box_configure.js'],
-        'client');
-    api.add_files('box_server.js', 'server');
-    api.add_files('box_client.js', 'client');
+    api.addFiles(['box_configure.html', 'box_configure.js'],'client');
+    api.addFiles('box_server.js', 'server');
+    api.addFiles('box_client.js', 'client');
+    api.addFiles('box.js', ['client', 'server']);
 });
 
-Package.on_test(function(api) {
+Package.onTest(function(api) {
   api.use('tinytest');
   api.use('gcampax:accounts-box');
 

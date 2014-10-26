@@ -23,18 +23,12 @@ Box.requestCredential = function (options, credentialRequestCompleteCallback) {
 
   var credentialToken = Random.secret();
 
-  var scope = ['folder_readwrite'];
-  if (options.requestPermissions)
-    scope = options.requestPermissions;
-  var flatScope = _.map(scope, encodeURIComponent).join('+');
-
   var loginStyle = OAuth._loginStyle('box', config, options);
 
   var loginUrl =
-        'https://api.box.com/api/oauth2/authorize' +
+        'https://app.box.com/api/oauth2/authorize' +
         '?response_type=code' +
         '&client_id=' + config.clientId +
-        '&scope=' + flatScope +
         '&redirect_uri=' + OAuth._redirectUri('box', config) +
         '&state=' + OAuth._stateParam(loginStyle, credentialToken);
 
