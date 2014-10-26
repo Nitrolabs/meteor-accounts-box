@@ -2,7 +2,23 @@
   <p>
     First, you'll need to get a Box Client ID. Follow these steps:
   </p>
-  <p>
-    FIXME: find out what's actually required for Box!
-  </p>
+  <ol>
+    <li>Visit
+      <a href="https://app.box.com/developers/services">
+        https://app.box.com/developers/services
+      </a>
+    </li>
+    <li>
+      If necessary, click on <samp>Get Started</samp>,
+      insert a name and create your application. Then click on <samp>
+        Configure Application</samp>.
+    </li>
+    <li>
+      Set <samp>Redirect URI</samp> to
+      <span class="url">{{siteUrl}}_oauth/box</span>
+    </li>
+    <li>
+      Click on <samp>Save Application</samp>
+    </li>
+  </ol>
 </template>

@@ -15,9 +15,15 @@ if (Meteor.isClient) {
         Box.requestCredential(options, credentialRequestCompleteCallback);
     };
 } else {
-    // XXX: decide what to put here
     Accounts.addAutopublishFields({
-        forLoggedInUser: [],
-        forOtherUsers: []
+        forLoggedInUser: _.map(
+            Box.whitelistedFields,
+            function (subfield) { return 'services.box.' + subfield; }),
+
+        forOtherUsers: _.map(
+            // even with autopublish, no legitimate web app should be
+            // publishing all users' emails
+            _.without(Box.whitelistedFields, 'email', 'verified_email'),
+            function (subfield) { return 'services.box.' + subfield; })
     });
 }
