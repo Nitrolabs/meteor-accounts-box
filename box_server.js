@@ -16,6 +16,9 @@ OAuth.registerService('box', 2, null, function(query) {
 
   var fields = _.pick(identity, Box.whitelistedFields);
   _.extend(serviceData, fields);
+  
+  // Add a proxy for the email address to match other accounts-oauth packages
+  serviceData.email = serviceData.login;
 
   // only set the token in serviceData if it's there. this ensures
   // that we don't lose old ones (since we only get this on the first
