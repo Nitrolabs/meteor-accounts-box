@@ -8,15 +8,15 @@ OAuth.registerService('box', 2, null, function(query) {
   var response = getTokens(query);
   var accessToken = response.accessToken;
   var identity = getIdentity(accessToken);
-
   var serviceData = {
     accessToken: accessToken,
-    expiresAt: (+new Date) + (1000 * response.expiresIn)
+    expiresAt: Date.now() + (1000 * response.expiresIn),
+    picture: identity.avatar_url,
   };
 
   var fields = _.pick(identity, Box.whitelistedFields);
   _.extend(serviceData, fields);
-  
+
   // Add a proxy for the email address to match other accounts-oauth packages
   serviceData.email = serviceData.login;
 
@@ -28,7 +28,7 @@ OAuth.registerService('box', 2, null, function(query) {
 
   return {
     serviceData: serviceData,
-    options: {profile: {name: identity.name}}
+    options: {profile: {name: identity.name, avatar: identity.avatar_url}}
   };
 });
 

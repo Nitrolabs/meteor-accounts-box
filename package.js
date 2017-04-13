@@ -1,14 +1,13 @@
 Package.describe({
-  name: 'gcampax:accounts-box',
+  name: 'nitrolabs:accounts-box',
   summary: 'OAuth2 integration with Box cloud storage service',
-  version: '1.0.4',
-  git: 'https://github.com/gcampax/meteor-accounts-box'
+  version: '1.1.0',
+  git: 'https://github.com/Nitrolabs/meteor-dropbox-oauth'
 });
 
 Package.onUse(function(api) {
-    api.versionsFrom('0.9.4');
+    api.versionsFrom('1.0');
     api.use('accounts-base', ['client', 'server']);
-    // Export Accounts (etc) to packages using this one.
     api.imply('accounts-base', ['client', 'server']);
     api.use('accounts-oauth', ['client', 'server']);
     api.use('oauth2', ['client', 'server']);
@@ -27,7 +26,6 @@ Package.onUse(function(api) {
 
 Package.onTest(function(api) {
   api.use('tinytest');
-  api.use('gcampax:accounts-box');
-
+  api.use('nitrolabs:accounts-box');
   api.addFiles('box-tests.js');
 });
