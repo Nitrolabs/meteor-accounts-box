@@ -21,6 +21,7 @@ Note the final question mark.
 ### Credits
 
 Developed by @gcampax and @maxkferg.
+
 Maintained by [Nitrolabs](https://www.nitrolabs.com)
 
 ### Licence
