@@ -1,7 +1,7 @@
 Package.describe({
   name: 'nitrolabs:accounts-box',
   summary: 'OAuth2 integration with Box cloud storage service',
-  version: '1.1.1',
+  version: '1.1.2',
   git: 'https://github.com/Nitrolabs/meteor-dropbox-oauth'
 });
 
