@@ -20,4 +20,8 @@ Note the final question mark.
 
 ### Credits
 
-* Shamelessly based on the core `accounts-google` and `google` packages.
+Developed by @gcampax and @maxkferg.
+Maintained by [Nitrolabs](https://www.nitrolabs.com)
+
+### Licence
+MIT
