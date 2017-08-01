@@ -37,7 +37,9 @@ OAuth.registerService('box', 2, null, function(query) {
 // - expiresIn: lifetime of token in seconds
 // - refreshToken, if this is the first authorization request
 var getTokens = function (query) {
-  var config = ServiceConfiguration.configurations.findOne({service: 'box'});
+  var config = ServiceConfiguration.configurations.findOne({
+    service: Meteor.settings.box.service || 'box',
+  });
   if (!config)
     throw new ServiceConfiguration.ConfigError();
 

@@ -14,7 +14,9 @@ Box.requestCredential = function (options, credentialRequestCompleteCallback) {
     options = {};
   }
 
-  var config = ServiceConfiguration.configurations.findOne({service: 'box'});
+  var config = ServiceConfiguration.configurations.findOne({
+    service: options.service || 'box',
+  });
   if (!config) {
     credentialRequestCompleteCallback && credentialRequestCompleteCallback(
       new ServiceConfiguration.ConfigError());
